@@ -1,0 +1,8 @@
+prefix=/root/catkin_ws/install
+
+Name: time_stamp
+Description: Description of time_stamp
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
