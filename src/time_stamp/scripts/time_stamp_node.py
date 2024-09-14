@@ -13,6 +13,7 @@ import numpy
 import tf2_ros
 import tf2_sensor_msgs
 
+#comentario de prueba 
 
 class ImagePublisher:
     def __init__(self):
