@@ -834,6 +834,12 @@ message_runtime_DIR:PATH=/opt/ros/noetic/share/message_runtime/cmake
 nodelet_DIR:PATH=/opt/ros/noetic/share/nodelet/cmake
 
 //Value Computed by CMake
+odometry_pose_BINARY_DIR:STATIC=/root/catkin_ws/build/odometry_pose
+
+//Value Computed by CMake
+odometry_pose_SOURCE_DIR:STATIC=/root/catkin_ws/src/odometry_pose
+
+//Value Computed by CMake
 orbbec_camera_BINARY_DIR:STATIC=/root/catkin_ws/build/OrbbecSDK_ROS1
 
 //Dependencies for the target
@@ -1117,7 +1123,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=7
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=8
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

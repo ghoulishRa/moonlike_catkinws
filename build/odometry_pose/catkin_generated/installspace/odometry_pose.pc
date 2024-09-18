@@ -1,0 +1,8 @@
+prefix=/root/catkin_ws/install
+
+Name: odometry_pose
+Description: Description of odometry_pose
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

@@ -6,5 +6,6 @@
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
 subdirs("time_stamp")
+subdirs("odometry_pose")
 subdirs("OrbbecSDK_ROS1")
 subdirs("pcl_processing")
