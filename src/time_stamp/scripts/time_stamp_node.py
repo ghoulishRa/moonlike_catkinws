@@ -12,7 +12,7 @@ import pcl
 import numpy
 import tf2_ros
 import tf2_sensor_msgs
-
+    
 #comentario de prueba 
 
 class ImagePublisher:
@@ -39,7 +39,7 @@ class ImagePublisher:
         self.timestamp_pub = rospy.Publisher('/image_timestamp', String, queue_size=10)
 
         #timers
-        self.timer = rospy.Timer(rospy.Duration(3), self.publish_image)
+        self.timer = rospy.Timer(rospy.Duration(0.03), self.publish_image)
 
         #msgs 
         self.msg_camera_01_image = Image()
