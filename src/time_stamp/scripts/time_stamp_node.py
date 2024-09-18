@@ -24,28 +24,47 @@ class ImagePublisher:
         self.target_frame = "base_link"
 
         #subscriptions
-        self.image_realsense_sub = rospy.Subscriber('/camera_01/color/image_raw', Image, self.camera_01_callback)
-        self.image_gemini_sub = rospy.Subscriber('/camera_02/color/image_raw', Image, self.camera_02_callback)
-        self.realsense_pointcloud = rospy.Subscriber('/camera_01/depth/points', PointCloud2, self.pcl_camera_01_callback)
-        self.gemini_pointcloud = rospy.Subscriber('/camera_02/depth/points', PointCloud2, self.pcl_camera_02_callback)
+        self.camera_01_sub_image = rospy.Subscriber('/camera_01/color/image_raw', Image, self.camera_01_image_callback)
+        self.camera_01_sub_depth = rospy.Subscriber('/camera_01/depth/image_raw', Image, self.camera_01_depth_callback)
+        self.camera_01_pointcloud_sub = rospy.Subscriber('/camera_01/depth/points', PointCloud2, self.camera_01_pcl_callback)
+        self.camera_01_ir_sub = rospy.Subscriber('/camera_01/ir/image_raw', Image, self.camera_01_ir_callback)
+        
+        self.camera_02_image_sub = rospy.Subscriber('/camera_02/color/image_raw', Image, self.camera_02_image_callback)
+        self.camera_02_sub_depth = rospy.Subscriber('/camera_02/image_raw', Image, self.camera_02_depth_callback)
+        self.camera_02_pointcloud_sub = rospy.Subscriber('/camera_02/depth/points', PointCloud2, self.pcl_camera_02_callback)
+        self.camera_02_ir_sub = rospy.Subscriber('/camera_02/ir/image_raw', Image, self.camera_02_ir_callback)
+
         self.pose_sub = rospy.Subscriber('/nanet_ros/Beenpuppycat/pose', PoseStamped, self.pose_callback)
 
         #publishers
-        self.camera_01_image_pub = rospy.Publisher('/camera_01/image', Image, queue_size=10)
-        self.camera_02_image_pub = rospy.Publisher('/camera_02/image', Image, queue_size=10)
-        self.camera_01_pcl_pub = rospy.Publisher('/camera_01/pcl', PointCloud2, queue_size=10)
-        self.camera_02_pcl_pub = rospy.Publisher('/camera_02/pcl', PointCloud2, queue_size=10)
+        self.camera_01_image_pub = rospy.Publisher('/time_stamp/camera_01/image', Image, queue_size=10)
+        self.camera_01_depth_pub = rospy.Publisher('/time_stamp/camera_01/depth', Image, queue_size=10)
+        self.camera_01_ir_pub = rospy.Publisher('/time_stamp/camera_01/ir', Image, queue_size=10)
+        self.camera_01_pcl_pub = rospy.Publisher('/time_stamp/camera_01/pcl', PointCloud2, queue_size=10)
+
+        self.camera_02_image_pub = rospy.Publisher('/time_stamp/camera_02/image', Image, queue_size=10)
+        self.camera_02_depth_pub = rospy.Publisher('/time_stamp/camera_02/depth', Image, queue_size=10)
+        self.camera_02_ir_pub = rospy.Publisher('/time_stamp/camera_02/ir', Image, queue_size=10)
+        self.camera_02_pcl_pub = rospy.Publisher('/time_stamp/camera_02/pcl', PointCloud2, queue_size=10)
+
+
         self.pose_pub = rospy.Publisher('/pose_copy', PoseStamped, queue_size=10)
         self.timestamp_pub = rospy.Publisher('/image_timestamp', String, queue_size=10)
 
         #timers
-        self.timer = rospy.Timer(rospy.Duration(0.03), self.publish_image)
+        self.timer = rospy.Timer(rospy.Duration(3), self.publish_image)
 
         #msgs 
         self.msg_camera_01_image = Image()
-        self.msg_camera_02_image = Image()
-        self.msg_camera_02_pcl = PointCloud2()
+        self.msg_camera_01_depth = Image()
+        self.msg_camera_01_ir = Image()
         self.msg_camera_01_pcl = PointCloud2()
+
+        self.msg_camera_02_image = Image()
+        self.msg_camera_02_depth = Image()
+        self.msg_camera_02_ir = Image()
+        self.msg_camera_02_pcl = PointCloud2()
+
         self.pose = PoseStamped()
 
         # Initialize tf2 Buffer and Listener
@@ -53,12 +72,29 @@ class ImagePublisher:
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer)
 
     #subscriber callback
-    def camera_01_callback(self, data):
+    def camera_01_image_callback(self, data):
 
         self.msg_camera_01_image = data
 
-    def camera_02_callback(self, data):
+    def camera_01_depth_callback(self, data):
     
+        self.msg_camera_01_depth = data
+
+    def camera_01_ir_callback(self, data):
+
+        self.msg_camera_01_image = data
+
+
+    def camera_02_image_callback(self, data):
+
+        self.msg_camera_02_image = data
+
+    def camera_02_depth_callback(self, data):
+    
+        self.msg_camera_02_depth = data
+
+    def camera_02_ir_callback(self, data):
+
         self.msg_camera_02_image = data
 
     def pcl_camera_02_callback(self, data):
@@ -80,7 +116,7 @@ class ImagePublisher:
         except Exception as e:
             rospy.logerr(f"Failed to upload PCL file: {e}")
 
-    def pcl_camera_01_callback(self, data):
+    def camera_01_pcl_callback(self, data):
 
         try:
             try:
@@ -110,9 +146,15 @@ class ImagePublisher:
             timestamp = datetime.now().strftime('%Y-%m-%d_%H-%M-%S')
 
             self.camera_01_image_pub.publish(self.msg_camera_01_image)
-            self.camera_02_image_pub.publish(self.msg_camera_02_image)
-            self.camera_02_pcl_pub.publish(self.msg_camera_02_pcl)
+            self.camera_01_depth_pub.publish(self.msg_camera_01_depth)
+            self.camera_01_ir_pub.publish(self.msg_camera_01_ir)
             self.camera_01_pcl_pub.publish(self.msg_camera_01_pcl)
+
+            self.camera_02_image_pub.publish(self.msg_camera_02_image)
+            self.camera_02_depth_pub.publish(self.msg_camera_02_depth)
+            self.camera_02_ir_pub.publish(self.msg_camera_02_ir)
+            self.camera_02_pcl_pub.publish(self.msg_camera_02_pcl)
+
             self.pose_pub.publish(self.pose)
             self.timestamp_pub.publish(timestamp)
 

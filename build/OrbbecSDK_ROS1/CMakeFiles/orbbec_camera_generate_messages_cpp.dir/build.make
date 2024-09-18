@@ -113,8 +113,8 @@ OrbbecSDK_ROS1/CMakeFiles/orbbec_camera_generate_messages_cpp: /root/catkin_ws/d
 /root/catkin_ws/devel/include/orbbec_camera/GetCameraInfo.h: /opt/ros/noetic/lib/gencpp/gen_cpp.py
 /root/catkin_ws/devel/include/orbbec_camera/GetCameraInfo.h: /root/catkin_ws/src/OrbbecSDK_ROS1/srv/GetCameraInfo.srv
 /root/catkin_ws/devel/include/orbbec_camera/GetCameraInfo.h: /opt/ros/noetic/share/sensor_msgs/msg/RegionOfInterest.msg
-/root/catkin_ws/devel/include/orbbec_camera/GetCameraInfo.h: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
 /root/catkin_ws/devel/include/orbbec_camera/GetCameraInfo.h: /opt/ros/noetic/share/std_msgs/msg/Header.msg
+/root/catkin_ws/devel/include/orbbec_camera/GetCameraInfo.h: /opt/ros/noetic/share/sensor_msgs/msg/CameraInfo.msg
 /root/catkin_ws/devel/include/orbbec_camera/GetCameraInfo.h: /opt/ros/noetic/share/gencpp/msg.h.template
 /root/catkin_ws/devel/include/orbbec_camera/GetCameraInfo.h: /opt/ros/noetic/share/gencpp/srv.h.template
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/root/catkin_ws/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Generating C++ code from orbbec_camera/GetCameraInfo.srv"
