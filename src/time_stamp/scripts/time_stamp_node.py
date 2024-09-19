@@ -52,7 +52,7 @@ class ImagePublisher:
         self.timestamp_pub = rospy.Publisher('/image_timestamp', String, queue_size=10)
 
         #timers
-        self.timer = rospy.Timer(rospy.Duration(3), self.publish_image)
+        self.timer = rospy.Timer(rospy.Duration(5), self.publish_image)
 
         #msgs 
         self.msg_camera_01_image = Image()
@@ -63,7 +63,7 @@ class ImagePublisher:
         self.msg_camera_02_image = Image()
         self.msg_camera_02_depth = Image()
         self.msg_camera_02_ir = Image()
-        self.msg_camera_02_pcl = PointCloud2()
+        self.msg_camera_02_pcl = PointCloud2()  
 
         self.pose = PoseStamped()
 
@@ -82,7 +82,7 @@ class ImagePublisher:
 
     def camera_01_ir_callback(self, data):
 
-        self.msg_camera_01_image = data
+        self.msg_camera_01_ir = data
 
 
     def camera_02_image_callback(self, data):
@@ -95,7 +95,7 @@ class ImagePublisher:
 
     def camera_02_ir_callback(self, data):
 
-        self.msg_camera_02_image = data
+        self.msg_camera_02_ir = data
 
     def pcl_camera_02_callback(self, data):
 
