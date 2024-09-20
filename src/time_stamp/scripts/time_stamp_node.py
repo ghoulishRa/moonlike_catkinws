@@ -30,7 +30,7 @@ class ImagePublisher:
         self.camera_01_ir_sub = rospy.Subscriber('/camera_01/ir/image_raw', Image, self.camera_01_ir_callback)
         
         self.camera_02_image_sub = rospy.Subscriber('/camera_02/color/image_raw', Image, self.camera_02_image_callback)
-        self.camera_02_sub_depth = rospy.Subscriber('/camera_02/image_raw', Image, self.camera_02_depth_callback)
+        self.camera_02_sub_depth = rospy.Subscriber('/camera_02/depth/image_raw', Image, self.camera_02_depth_callback)
         self.camera_02_pointcloud_sub = rospy.Subscriber('/camera_02/depth/points', PointCloud2, self.pcl_camera_02_callback)
         self.camera_02_ir_sub = rospy.Subscriber('/camera_02/ir/image_raw', Image, self.camera_02_ir_callback)
 
