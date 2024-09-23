@@ -1,2 +1,2 @@
-OrbbecSDK_ROS1:data_to_s3:odometry_pose:pcl_processing:time_stamp
+OrbbecSDK_ROS1:data_to_s3:odometry_pose:pcl_processing:pcl_registration:time_stamp
 -DCATKIN_DEVEL_PREFIX=/root/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/root/catkin_ws/install -G Unix Makefiles

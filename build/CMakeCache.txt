@@ -864,6 +864,18 @@ pcl_processing_BINARY_DIR:STATIC=/root/catkin_ws/build/pcl_processing
 pcl_processing_SOURCE_DIR:STATIC=/root/catkin_ws/src/pcl_processing
 
 //Value Computed by CMake
+pcl_registration_BINARY_DIR:STATIC=/root/catkin_ws/build/pcl_registration
+
+//Value Computed by CMake
+pcl_registration_SOURCE_DIR:STATIC=/root/catkin_ws/src/pcl_registration
+
+//Value Computed by CMake
+pcl_registration_process_BINARY_DIR:STATIC=/root/catkin_ws/build/pcl_registration_process
+
+//Value Computed by CMake
+pcl_registration_process_SOURCE_DIR:STATIC=/root/catkin_ws/src/pcl_registration_process
+
+//Value Computed by CMake
 pcl_test_BINARY_DIR:STATIC=/root/catkin_ws/build/pcl_processing
 
 //Value Computed by CMake
@@ -1129,7 +1141,7 @@ CMAKE_MODULE_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_NM
 CMAKE_NM-ADVANCED:INTERNAL=1
 //number of local generators
-CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=9
+CMAKE_NUMBER_OF_MAKEFILES:INTERNAL=10
 //ADVANCED property for variable: CMAKE_OBJCOPY
 CMAKE_OBJCOPY-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_OBJDUMP

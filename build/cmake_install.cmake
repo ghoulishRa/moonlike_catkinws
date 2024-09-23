@@ -131,6 +131,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/root/catkin_ws/build/gtest/cmake_install.cmake")
+  include("/root/catkin_ws/build/pcl_registration/cmake_install.cmake")
   include("/root/catkin_ws/build/time_stamp/cmake_install.cmake")
   include("/root/catkin_ws/build/data_to_s3/cmake_install.cmake")
   include("/root/catkin_ws/build/odometry_pose/cmake_install.cmake")
