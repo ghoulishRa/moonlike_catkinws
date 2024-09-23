@@ -52,7 +52,7 @@ class ImagePublisher:
         self.timestamp_pub = rospy.Publisher('/image_timestamp', String, queue_size=10)
 
         #timers
-        self.timer = rospy.Timer(rospy.Duration(5), self.publish_image)
+        self.timer = rospy.Timer(rospy.Duration(5), self.publish_image) #duración entre frame y frame para formar la trama
 
         #msgs 
         self.msg_camera_01_image = Image()

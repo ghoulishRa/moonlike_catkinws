@@ -26,8 +26,6 @@ public:
         // Publishers
         aligned_pub_ = nh_.advertise<PointCloud>("/aligned_cloud", 1);
         merged_pub_ = nh_.advertise<PointCloud>("/merged_cloud", 1);
-        
-        // Additional publishers for processed point clouds
         pcl_cam_01_pub_ = nh_.advertise<PointCloud>("/pcl_process/pcl_cam_01", 1);
         pcl_cam_02_pub_ = nh_.advertise<PointCloud>("/pcl_process/pcl_cam_02", 1);
 
