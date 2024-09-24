@@ -43,10 +43,15 @@ class ImageUploader:
         rospy.Subscriber("/time_stamp/camera_02/ir/", Image, self.gemini2_ir_callback)
         rospy.Subscriber("/time_stamp/camera_02/pcl/", PointCloud2, self.gemini2_pcl_callback)
 
+        #Global subscriotions
+
+        rospy.Subscriber("/pcl_processing/aligned_pcl", PointCloud2, self.icp_pointcloud_callback)
+        
+
     def gemini2L_image_callback(self, msg):
         try:
             # Convert ROS Image message to OpenCV image
-            cv_image = self.bridge.imgmsg_to_cv2(msg, 'rgb8')
+            cv_image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
 
             # Generate a unique filename
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S%f")
@@ -159,7 +164,7 @@ class ImageUploader:
     def gemini2_image_callback(self, msg):
         try:
             # Convert ROS Image message to OpenCV image
-            cv_image = self.bridge.imgmsg_to_cv2(msg, 'rgb8')
+            cv_image = self.bridge.imgmsg_to_cv2(msg, 'bgr8')
 
             # Generate a unique filename
             timestamp = datetime.now().strftime("%Y%m%d_%H%M%S%f")
@@ -265,7 +270,39 @@ class ImageUploader:
             os.remove(pcl_filename)
 
         except Exception as e:
+            rospy.logerr(f"Failed to upload image: {e}")
+
+
+    def icp_pointcloud_callback(self, msg):
+        try:
+
+            point_list = list(pc2.read_points(msg, field_names=("x", "y", "z"), skip_nans=True))
+            # Convert ROS PointCloud2 message to PCL data
+            pcl_cloud = pcl.PointCloud()
+            pcl_cloud.from_list(point_list)
+
+            # Generate a unique filename for the PCL file
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S%f")
+            pcl_filename = f"aligned_pcl_{timestamp}.pcd"
+
+            # Save the PCL data to a temporary .pcd file
+            pcl.save(pcl_cloud, pcl_filename)
+
+            # Define the subfolder in the S3 bucket
+            subfolder = "aligned_pointclouds/"  # Replace with your subfolder path
+            s3_key = f"{subfolder}{pcl_filename}"
+
+            # Upload the PCL file to S3 in the specified subfolder
+            self.s3_client.upload_file(pcl_filename, self.bucket_name, s3_key)
+            rospy.loginfo(f"Uploaded {pcl_filename} to S3 bucket {self.bucket_name} in subfolder {subfolder}")
+
+            # Remove the temporary file
+            os.remove(pcl_filename)
+
+        except Exception as e:
             rospy.logerr(f"Failed to upload PCL file: {e}")
+
+
 
 if __name__ == '__main__':
     try:
