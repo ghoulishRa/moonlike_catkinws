@@ -15,7 +15,7 @@ class PclProcessing:
         self.sub_source = rospy.Subscriber('/time_stamp/camera_02/pcl', PointCloud2, self.camera_02_pcl_callback)
 
         # Publishers
-        self.pcl_aligned_pub = rospy.Publisher('/pcl_processing/aligned_pcl', PointCloud2, queue_size=10)
+        self.pcl_aligned_pub = rospy.Publisher('/pcl_registration/aligned_pcl', PointCloud2, queue_size=10)
 
         # Variables
         self.cloud1 = None
