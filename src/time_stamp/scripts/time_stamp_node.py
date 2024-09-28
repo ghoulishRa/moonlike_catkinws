@@ -35,6 +35,8 @@ class ImagePublisher:
         self.camera_02_ir_sub = rospy.Subscriber('/camera_02/ir/image_raw', Image, self.camera_02_ir_callback)
 
         self.pose_sub = rospy.Subscriber('/nanet_ros/Beenpuppycat/pose', PoseStamped, self.pose_callback)
+        self.thermal_camera_sub = rospy.Subscriber('/thermal_camera/image_raw', Image, self.thermal_callback)
+
 
         #publishers
         self.camera_01_image_pub = rospy.Publisher('/time_stamp/camera_01/image', Image, queue_size=10)
@@ -46,13 +48,14 @@ class ImagePublisher:
         self.camera_02_depth_pub = rospy.Publisher('/time_stamp/camera_02/depth', Image, queue_size=10)
         self.camera_02_ir_pub = rospy.Publisher('/time_stamp/camera_02/ir', Image, queue_size=10)
         self.camera_02_pcl_pub = rospy.Publisher('/time_stamp/camera_02/pcl', PointCloud2, queue_size=10)
-
+        
+        self.thermal_pub = rospy.Publisher('/time_stamp/thermal/image', Image, queue_size=10)
 
         self.pose_pub = rospy.Publisher('/pose_copy', PoseStamped, queue_size=10)
         self.timestamp_pub = rospy.Publisher('/image_timestamp', String, queue_size=10)
 
         #timers
-        self.timer = rospy.Timer(rospy.Duration(5), self.publish_image) #duración entre frame y frame para formar la trama
+        self.timer = rospy.Timer(rospy.Duration(8), self.publish_image) #duración entre frame y frame para formar la trama
 
         #msgs 
         self.msg_camera_01_image = Image()
@@ -66,6 +69,7 @@ class ImagePublisher:
         self.msg_camera_02_pcl = PointCloud2()  
 
         self.pose = PoseStamped()
+        self.msg_thermal = Image()
 
         # Initialize tf2 Buffer and Listener
         self.tf_buffer = tf2_ros.Buffer()
@@ -83,7 +87,6 @@ class ImagePublisher:
     def camera_01_ir_callback(self, data):
 
         self.msg_camera_01_ir = data
-
 
     def camera_02_image_callback(self, data):
 
@@ -136,7 +139,12 @@ class ImagePublisher:
             rospy.logerr(f"Failed to upload PCL file: {e}")
 
     def pose_callback(self, data):
+
         self.pose = data
+
+    def thermal_callback (self, data):
+
+        self.msg_thermal = data
 
     #publisher callback
     def publish_image(self, event):
@@ -156,6 +164,7 @@ class ImagePublisher:
             self.camera_02_pcl_pub.publish(self.msg_camera_02_pcl)
 
             self.pose_pub.publish(self.pose)
+            self.thermal_pub.publish(self.msg_thermal)
             self.timestamp_pub.publish(timestamp)
 
             rospy.loginfo(f'Datos publicados con timestamp {timestamp}')
