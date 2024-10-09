@@ -115,7 +115,7 @@ Diagnostics_EXTERNAL_OBJECTS =
 /root/catkin_ws/devel/lib/libDiagnostics.so: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 /root/catkin_ws/devel/lib/libDiagnostics.so: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 /root/catkin_ws/devel/lib/libDiagnostics.so: /root/catkin_ws/devel/lib/libCamera.so
-/root/catkin_ws/devel/lib/libDiagnostics.so: usr/lib/libSpinnaker.so
+/root/catkin_ws/devel/lib/libDiagnostics.so: /opt/ros/noetic/lib/libSpinnaker.so
 /root/catkin_ws/devel/lib/libDiagnostics.so: /opt/ros/noetic/lib/libcamera_info_manager.so
 /root/catkin_ws/devel/lib/libDiagnostics.so: /opt/ros/noetic/lib/libcamera_calibration_parsers.so
 /root/catkin_ws/devel/lib/libDiagnostics.so: /opt/ros/noetic/lib/libdiagnostic_updater.so

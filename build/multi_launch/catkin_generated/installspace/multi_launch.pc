@@ -1,0 +1,8 @@
+prefix=/root/catkin_ws/install
+
+Name: multi_launch
+Description: Description of multi_launch
+Version: 1.5.11
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib -lmulti_launch -lcamera_info_manager -lcv_bridge -ldynamic_reconfigure -limage_geometry -limage_transport -lmessage_filters -lmessage_runtime -lstd_srvs -ltf2 -ltf2_ros -limage_exposure_msgs -lnodelet -lroscpp -lsensor_msgs -lwfov_camera_msgs
+Requires: 

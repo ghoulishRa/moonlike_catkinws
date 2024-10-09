@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>spinnaker_orbbec_camera_driver</name>
+  <version>1.5.11</version> <!-- Usando la versión más alta de los dos -->
+  <description>Combined Spinnaker and Orbbec Camera package.</description>
+
+  <!-- Maintainers -->
+  <maintainer email="mhosmar@clearpathrobotics.com">Mike Hosmar</maintainer>
+  <maintainer email="mocun@orbbec.com">Joe Dong</maintainer>
+
+  <license>BSD</license> <!-- BSD, ya que es menos restrictiva -->
+  <license>Apache License 2.0</license>
+
+  <!-- URL from spinnaker_camera_driver -->
+  <url type="website">http://ros.org/wiki/spinnaker_camera_driver</url>
+
+  <!-- Authors -->
+  <author>Chad Rockey</author>
+
+  <!-- Build tool dependencies -->
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <!-- Build dependencies -->
+  <build_depend>curl</build_depend>  <!-- For downloading Spinnaker -->
+  <build_depend>dpkg</build_depend>  <!-- For unpacking Spinnaker debs -->
+
+  <!-- Runtime dependencies -->
+  <depend>roscpp</depend>
+  <depend>nodelet</depend>
+  <depend>sensor_msgs</depend>
+  <depend>wfov_camera_msgs</depend>  <!-- From spinnaker_camera_driver -->
+  <depend>image_exposure_msgs</depend>  <!-- From spinnaker_camera_driver -->
+  <depend>camera_info_manager</depend>
+  <depend>image_transport</depend>
+  <depend>dynamic_reconfigure</depend>
+  <depend>diagnostic_updater</depend>
+  <depend>cv_bridge</depend>  <!-- From multi_launch -->
+  <depend>image_geometry</depend>  <!-- From multi_launch -->
+  <depend>libudev-dev</depend>  <!-- From multi_launch -->
+  <depend>libusb-1.0-dev</depend>  <!-- Common in both packages -->
+  <depend>message_filters</depend>  <!-- From multi_launch -->
+  <depend>message_generation</depend>  <!-- From multi_launch -->
+  <depend>message_runtime</depend>  <!-- From multi_launch -->
+  <depend>std_srvs</depend>  <!-- From multi_launch -->
+  <depend>tf2_ros</depend>  <!-- From multi_launch -->
+  <depend>tf2</depend>  <!-- From multi_launch -->
+  <depend>pluginlib</depend>  <!-- From multi_launch -->
+
+  <!-- Executable dependencies -->
+  <exec_depend>image_proc</exec_depend>
+
+  <!-- Test dependencies -->
+  <test_depend>roslaunch</test_depend>
+  <test_depend>roslint</test_depend>
+</package>

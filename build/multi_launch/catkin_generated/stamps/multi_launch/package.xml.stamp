@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<package format="3">
+    <name>multi_launch</name>
+    <version>1.5.11</version>
+    <description>Combined package for Spinnaker and Orbbec Camera drivers.</description>
+
+    <maintainer email="mhosmar@clearpathrobotics.com">Mike Hosmar</maintainer>
+    <maintainer email="mocun@orbbec.com">Joe Dong</maintainer>
+
+    <license>Apache License 2.0</license>
+
+    <url type="website">http://ros.org/wiki/spinnaker_camera_driver</url>
+
+    <buildtool_depend>catkin</buildtool_depend>
+
+    <!-- Build dependencies -->
+    <build_depend>curl</build_depend>  <!-- for downloading Spinnaker -->
+    <build_depend>dpkg</build_depend>  <!-- for unpacking Spinnaker debs -->
+
+    <!-- Core ROS dependencies -->
+    <depend>roscpp</depend>
+    <depend>nodelet</depend>
+    <depend>sensor_msgs</depend>
+    <depend>wfov_camera_msgs</depend>
+    <depend>image_exposure_msgs</depend>
+    <depend>camera_info_manager</depend>
+    <depend>image_transport</depend>
+    <depend>dynamic_reconfigure</depend>
+    <depend>diagnostic_updater</depend>
+
+    <!-- Orbbec specific dependencies -->
+    <depend>cv_bridge</depend>
+    <depend>image_geometry</depend>
+    <depend>libudev-dev</depend>
+    <depend>libusb-1.0-dev</depend>
+    <depend>message_filters</depend>
+    <depend>message_generation</depend>
+    <depend>message_runtime</depend>
+    <depend>std_srvs</depend>
+    <depend>tf2_ros</depend>
+    <depend>tf2</depend>
+    <depend>pluginlib</depend>
+
+    <!-- Runtime dependencies -->
+    <exec_depend>image_proc</exec_depend>
+
+    <!-- Test dependencies -->
+    <test_depend>roslaunch</test_depend>
+    <test_depend>roslint</test_depend>
+
+    <export>
+        <nodelet plugin="${prefix}/nodelet_plugins.xml" />
+    </export>
+</package>

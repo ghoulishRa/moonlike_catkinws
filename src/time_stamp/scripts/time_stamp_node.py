@@ -34,9 +34,8 @@ class ImagePublisher:
         self.camera_02_pointcloud_sub = rospy.Subscriber('/camera_02/depth/points', PointCloud2, self.pcl_camera_02_callback)
         self.camera_02_ir_sub = rospy.Subscriber('/camera_02/ir/image_raw', Image, self.camera_02_ir_callback)
 
-        self.pose_sub = rospy.Subscriber('/nanet_ros/Beenpuppycat/pose', PoseStamped, self.pose_callback)
+        self.pose_sub = rospy.Subscriber('/natnet_ros/bee/pose', PoseStamped, self.pose_callback)
         self.thermal_camera_sub = rospy.Subscriber('/thermal_camera/image_raw', Image, self.thermal_callback)
-
 
         #publishers
         self.camera_01_image_pub = rospy.Publisher('/time_stamp/camera_01/image', Image, queue_size=10)
@@ -51,7 +50,7 @@ class ImagePublisher:
         
         self.thermal_pub = rospy.Publisher('/time_stamp/thermal/image', Image, queue_size=10)
 
-        self.pose_pub = rospy.Publisher('/pose_copy', PoseStamped, queue_size=10)
+        self.pose_pub = rospy.Publisher('/time_stamp/pose_copy', PoseStamped, queue_size=10)
         self.timestamp_pub = rospy.Publisher('/image_timestamp', String, queue_size=10)
 
         #timers

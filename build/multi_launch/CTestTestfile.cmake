@@ -1,0 +1,10 @@
+# CMake generated Testfile for 
+# Source directory: /root/catkin_ws/src/multi_launch
+# Build directory: /root/catkin_ws/build/multi_launch
+# 
+# This file includes the relevant testing commands required for 
+# testing this directory and lists subdirectories to be tested as well.
+add_test(_ctest_multi_launch_roslaunch-check_launch_camera.launch "/root/catkin_ws/build/catkin_generated/env_cached.sh" "/usr/bin/python3" "/opt/ros/noetic/share/catkin/cmake/test/run_tests.py" "/root/catkin_ws/build/test_results/multi_launch/roslaunch-check_launch_camera.launch.xml" "--return-code" "/usr/bin/cmake -E make_directory /root/catkin_ws/build/test_results/multi_launch" "/opt/ros/noetic/share/roslaunch/cmake/../scripts/roslaunch-check -o \"/root/catkin_ws/build/test_results/multi_launch/roslaunch-check_launch_camera.launch.xml\" \"/root/catkin_ws/src/multi_launch/launch/camera.launch\" ")
+set_tests_properties(_ctest_multi_launch_roslaunch-check_launch_camera.launch PROPERTIES  _BACKTRACE_TRIPLES "/opt/ros/noetic/share/catkin/cmake/test/tests.cmake;160;add_test;/opt/ros/noetic/share/roslaunch/cmake/roslaunch-extras.cmake;66;catkin_run_tests_target;/root/catkin_ws/src/multi_launch/CMakeLists.txt;400;roslaunch_add_file_check;/root/catkin_ws/src/multi_launch/CMakeLists.txt;0;")
+add_test(_ctest_multi_launch_roslint_package "/root/catkin_ws/build/catkin_generated/env_cached.sh" "/usr/bin/python3" "/opt/ros/noetic/share/catkin/cmake/test/run_tests.py" "/root/catkin_ws/build/test_results/multi_launch/roslint-multi_launch.xml" "--working-dir" "/root/catkin_ws/build/multi_launch" "--return-code" "/opt/ros/noetic/share/roslint/cmake/../../../lib/roslint/test_wrapper /root/catkin_ws/build/test_results/multi_launch/roslint-multi_launch.xml make roslint_multi_launch")
+set_tests_properties(_ctest_multi_launch_roslint_package PROPERTIES  _BACKTRACE_TRIPLES "/opt/ros/noetic/share/catkin/cmake/test/tests.cmake;160;add_test;/opt/ros/noetic/share/roslint/cmake/roslint-extras.cmake;67;catkin_run_tests_target;/root/catkin_ws/src/multi_launch/CMakeLists.txt;405;roslint_add_test;/root/catkin_ws/src/multi_launch/CMakeLists.txt;0;")

@@ -115,7 +115,7 @@ spinnaker_test_node_EXTERNAL_OBJECTS =
 /root/catkin_ws/devel/lib/spinnaker_camera_driver/spinnaker_test_node: /usr/lib/x86_64-linux-gnu/libboost_thread.so.1.71.0
 /root/catkin_ws/devel/lib/spinnaker_camera_driver/spinnaker_test_node: /usr/lib/x86_64-linux-gnu/libconsole_bridge.so.0.4
 /root/catkin_ws/devel/lib/spinnaker_camera_driver/spinnaker_test_node: /root/catkin_ws/devel/lib/libCamera.so
-/root/catkin_ws/devel/lib/spinnaker_camera_driver/spinnaker_test_node: usr/lib/libSpinnaker.so
+/root/catkin_ws/devel/lib/spinnaker_camera_driver/spinnaker_test_node: /opt/ros/noetic/lib/libSpinnaker.so
 /root/catkin_ws/devel/lib/spinnaker_camera_driver/spinnaker_test_node: /opt/ros/noetic/lib/libcamera_info_manager.so
 /root/catkin_ws/devel/lib/spinnaker_camera_driver/spinnaker_test_node: /opt/ros/noetic/lib/libcamera_calibration_parsers.so
 /root/catkin_ws/devel/lib/spinnaker_camera_driver/spinnaker_test_node: /opt/ros/noetic/lib/libdiagnostic_updater.so

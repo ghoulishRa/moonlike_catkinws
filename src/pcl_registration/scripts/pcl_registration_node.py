@@ -21,7 +21,7 @@ class PclProcessing:
         self.cloud1 = None
         self.cloud2 = None
 
-        self.voxel_size = 0.07
+        self.voxel_size = 0.06
         self.threshold = self.voxel_size * 1.0
 
         # Flags
@@ -62,7 +62,7 @@ class PclProcessing:
         radius_feature = voxel_size * 7
 
         pcd_down.estimate_normals(
-            o3d.geometry.KDTreeSearchParamHybrid(radius=radius_normal, max_nn=30)
+            o3d.geometry.KDTreeSearchParamHybrid(radius=radius_normal, max_nn=50)
         )
 
         pcd_fpfh = o3d.pipelines.registration.compute_fpfh_feature(

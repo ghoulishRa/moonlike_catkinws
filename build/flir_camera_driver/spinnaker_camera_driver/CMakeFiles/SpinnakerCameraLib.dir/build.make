@@ -80,7 +80,7 @@ SpinnakerCameraLib_EXTERNAL_OBJECTS =
 /root/catkin_ws/devel/lib/libSpinnakerCameraLib.so: flir_camera_driver/spinnaker_camera_driver/CMakeFiles/SpinnakerCameraLib.dir/src/SpinnakerCamera.cpp.o
 /root/catkin_ws/devel/lib/libSpinnakerCameraLib.so: flir_camera_driver/spinnaker_camera_driver/CMakeFiles/SpinnakerCameraLib.dir/build.make
 /root/catkin_ws/devel/lib/libSpinnakerCameraLib.so: /root/catkin_ws/devel/lib/libCamera.so
-/root/catkin_ws/devel/lib/libSpinnakerCameraLib.so: usr/lib/libSpinnaker.so
+/root/catkin_ws/devel/lib/libSpinnakerCameraLib.so: /opt/ros/noetic/lib/libSpinnaker.so
 /root/catkin_ws/devel/lib/libSpinnakerCameraLib.so: /opt/ros/noetic/lib/libcamera_info_manager.so
 /root/catkin_ws/devel/lib/libSpinnakerCameraLib.so: /opt/ros/noetic/lib/libcamera_calibration_parsers.so
 /root/catkin_ws/devel/lib/libSpinnakerCameraLib.so: /opt/ros/noetic/lib/libdiagnostic_updater.so
