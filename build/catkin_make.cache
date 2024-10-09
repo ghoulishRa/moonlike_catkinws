@@ -1,2 +1,2 @@
-OrbbecSDK_ROS1:data_to_s3:flir_camera_driver/flir_camera_description:flir_camera_driver/flir_camera_driver:flir_camera_driver/spinnaker_camera_driver:odometry_pose:pcl_processing:pcl_registration:save_files:time_stamp
+data_to_s3:multi_launch:natnet_ros_cpp:odometry_pose:pcl_processing:pcl_registration:save_files:time_stamp
 -DCATKIN_DEVEL_PREFIX=/root/catkin_ws/devel -DCMAKE_INSTALL_PREFIX=/root/catkin_ws/install -G Unix Makefiles

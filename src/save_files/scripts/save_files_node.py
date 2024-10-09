@@ -2,6 +2,7 @@
 
 import rospy
 from sensor_msgs.msg import Image, PointCloud2
+from geometry_msgs.msg import PoseStamped
 import sensor_msgs.point_cloud2 as pc2
 from cv_bridge import CvBridge
 import cv2
@@ -33,7 +34,10 @@ class ImageUploader:
         #Global subscriptions
 
         rospy.Subscriber("/pcl_registration/aligned_pcl", PointCloud2, self.icp_pointcloud_callback)
-        rospy.Subscriber("/time_stamp/thermal/image", Image, self.thermal_callback)        
+        rospy.Subscriber("/time_stamp/thermal/image", Image, self.thermal_callback)  
+        rospy.Subscriber("/time_stamp/pose_copy", PoseStamped, self.pose_callback)  
+
+
 
     def camera_01_image_callback(self, msg):
         try:
@@ -212,6 +216,32 @@ class ImageUploader:
         
             rospy.logerr(f"Failed to upload thermal image: {e}")
 
+    def pose_callback (self, msg):
+        try:
+            # Obtener la posición (x, y, z) y la orientación (x, y, z, w) del mensaje PoseStamped
+            position = msg.pose.position
+            orientation = msg.pose.orientation
+
+            # Generar timestamp y nombre de archivo
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S%f")
+            filename = f"/root/rosbag/timestamp/pose/{timestamp}.txt"
+
+            # Abrir el archivo y escribir los datos
+            with open(filename, 'w') as file:
+                file.write(f"Timestamp: {timestamp}\n")
+                file.write(f"Position:\n")
+                file.write(f"\tx: {position.x}\n")
+                file.write(f"\ty: {position.y}\n")
+                file.write(f"\tz: {position.z}\n")
+                file.write(f"Orientation:\n")
+                file.write(f"\tx: {orientation.x}\n")
+                file.write(f"\ty: {orientation.y}\n")
+                file.write(f"\tz: {orientation.z}\n")
+                file.write(f"\tw: {orientation.w}\n")
+            rospy.loginfo(f"Pose data written to {filename}")
+
+        except Exception as e:
+            rospy.logerr(f"Failed to record pose data: {e}")
 
 if __name__ == '__main__':
     try:
