@@ -3,13 +3,13 @@
     <include file="$(find multi_launch)/launch/gemini2L.launch">
         <arg name="camera_name" value="camera_01"/>
         <arg name="usb_port" value="2-1.1"/>
-        <arg name="device_num" value="2"/>
+        <arg name="device_num" value="3"/>
     </include>
 
     <include file="$(find multi_launch)/launch/gemini2.launch">
         <arg name="camera_name" value="camera_02"/>
         <arg name="usb_port" value="2-1.2.1"/>
-        <arg name="device_num" value="2"/>
+        <arg name="device_num" value="3"/>
     </include>
 
     <include file="$(find multi_launch)/launch/camera.launch">

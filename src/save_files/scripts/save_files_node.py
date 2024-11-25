@@ -34,10 +34,7 @@ class ImageUploader:
         #Global subscriptions
 
         rospy.Subscriber("/pcl_registration/aligned_pcl", PointCloud2, self.icp_pointcloud_callback)
-        rospy.Subscriber("/time_stamp/thermal/image", Image, self.thermal_callback)  
         rospy.Subscriber("/time_stamp/pose_copy", PoseStamped, self.pose_callback)  
-
-
 
     def camera_01_image_callback(self, msg):
         try:
@@ -199,22 +196,6 @@ class ImageUploader:
 
         except Exception as e:
             rospy.logerr(f"Failed to upload aligned PCL aligned file: {e}")
-
-    def thermal_callback (self, msg):
-
-        try:
-
-            cv_image = self.bridge.imgmsg_to_cv2(msg, 'mono8')
-
-            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S%f")
-            filename = f"/root/rosbag/timestamp/thermal/thermal_image_{timestamp}.jpg"
-
-            # Save the image temporarily
-            cv2.imwrite(filename, cv_image)
-
-        except Exception as e:
-        
-            rospy.logerr(f"Failed to upload thermal image: {e}")
 
     def pose_callback (self, msg):
         try:
