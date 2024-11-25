@@ -92,10 +92,10 @@ public:
   static const uint8_t LEVEL_RECONFIGURE_CLOSE = 3;
 
   /** Parameters that need a sensor to stop streaming when changed. */
-  static const uint8_t LEVEL_RECONFIGURE_STOP = 1;
+  static const uint8_t LEVEL_RECONFIGURE_STOP = 3;
 
   /** Parameters that can be changed while a sensor is streaming. */
-  static const uint8_t LEVEL_RECONFIGURE_RUNNING = 0;
+  static const uint8_t LEVEL_RECONFIGURE_RUNNING = 3;
 
   /*!
   * \brief Function that connects to a specified camera.

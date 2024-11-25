@@ -21,8 +21,8 @@ class PclProcessing:
         self.cloud1 = None
         self.cloud2 = None
 
-        self.voxel_size = 0.06
-        self.threshold = self.voxel_size * 1.0
+        self.voxel_size = 0.052
+        self.threshold = self.voxel_size * 1.1
 
         # Flags
         self.cloud_received_1_ = False
@@ -58,7 +58,7 @@ class PclProcessing:
 
     def preprocess_point_cloud(self, pcd, voxel_size):
         pcd_down = pcd.voxel_down_sample(voxel_size)
-        radius_normal = voxel_size * 5
+        radius_normal = voxel_size * 4.5
         radius_feature = voxel_size * 7
 
         pcd_down.estimate_normals(
@@ -72,7 +72,7 @@ class PclProcessing:
         return pcd_down, pcd_fpfh
 
     def execute_global_registration(self, source_down, target_down, source_fpfh, target_fpfh, voxel_size):
-        distance_threshold = voxel_size * 2.5
+        distance_threshold = voxel_size * 1.1
         result = o3d.pipelines.registration.registration_ransac_based_on_feature_matching(
             source_down, target_down, source_fpfh, target_fpfh, True,
             distance_threshold,
@@ -80,10 +80,9 @@ class PclProcessing:
             3, [
                 o3d.pipelines.registration.CorrespondenceCheckerBasedOnEdgeLength(0.9),
                 o3d.pipelines.registration.CorrespondenceCheckerBasedOnDistance(distance_threshold)
-            ], o3d.pipelines.registration.RANSACConvergenceCriteria(500000, 0.999)
+            ], o3d.pipelines.registration.RANSACConvergenceCriteria(1000000, 0.999)
         )
-        #
-        #print(result)
+        print(result)
         return result
 
     def processing(self):
@@ -103,10 +102,10 @@ class PclProcessing:
             reg_p2p = o3d.pipelines.registration.registration_icp(
                 source_down, target_down, self.threshold, T,
                 o3d.pipelines.registration.TransformationEstimationPointToPoint(),
-                o3d.pipelines.registration.ICPConvergenceCriteria(max_iteration=10000)
+                o3d.pipelines.registration.ICPConvergenceCriteria(max_iteration=1000)
             )
 
-            print(reg_p2p)
+            #print(reg_p2p)
 
             T2 = reg_p2p.transformation
             

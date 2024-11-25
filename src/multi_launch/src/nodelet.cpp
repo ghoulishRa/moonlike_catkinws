@@ -299,7 +299,7 @@ private:
     spinnaker_.setDesiredCamera((uint32_t)serial);
 
     // Get GigE camera parameters:
-    pnh.param<int>("packet_size", packet_size_, 1400);
+    pnh.param<int>("packet_size", packet_size_, 1000);
     pnh.param<bool>("auto_packet_size", auto_packet_size_, true);
     pnh.param<int>("packet_delay", packet_delay_, 4000);
 
@@ -323,7 +323,7 @@ private:
 
     // queue size of ros publisher
     int queue_size;
-    pnh.param<int>("queue_size", queue_size, 5);
+    pnh.param<int>("queue_size", queue_size, 10);
 
     // Start the camera info manager and attempt to load any configurations
     std::stringstream cinfo_name;
@@ -341,7 +341,7 @@ private:
     // Set up a diagnosed publisher
     double desired_freq;
     std::string device_type;
-    pnh.param<std::string>("device_type", device_type, "USB3");
+    pnh.param<std::string>("device_type", device_type, "GigE");
     pnh.param<double>("desired_freq", desired_freq, 15.0);
     pnh.param<double>("min_freq", min_freq_, desired_freq);
     pnh.param<double>("max_freq", max_freq_, desired_freq);
@@ -349,7 +349,7 @@ private:
                             // frequencies.
     pnh.param<double>("freq_tolerance", freq_tolerance, 0.1);
     int window_size;  // Number of samples to consider in frequency
-    pnh.param<int>("window_size", window_size, 30);
+    pnh.param<int>("window_size", window_size, 15);
     double min_acceptable;  // The minimum publishing delay (in seconds) before warning.  Negative values mean future
                             // dated messages.
     pnh.param<double>("min_acceptable_delay", min_acceptable, 0.0);
